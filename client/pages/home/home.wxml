@@ -1,0 +1,21 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+        <input name="number" placeholder="输入编号" />
+    </view>
+    <view class="btn-area">
+        <button formType="submit">查询</button>
+    </view>
+</form>
+
+<view class="result-text" wx:if="{{requestStatus == 1}}">
+    <text class="text-item">{{'产品编号：' + requestData.number}}</text>
+    <text class="text-item">{{'产品名称：' + requestData.name}}</text>
+    <text class="text-item">{{'产品材质：' + requestData.material}}</text>
+    <text class="text-item">{{'产品规格：' + requestData.format}}</text>
+    <text class="text-item">{{'表面处理：' + (requestData.face?requestData.face:'')}}</text>
+    <text class="text-item">{{'建议售价：' + requestData.price}}</text>
+    <text class="text-item text-warn" wx:if="{{requestData.isOnline == 0}}">{{'本产品非网络销售产品'}}</text>
+</view>
+<view class="result-text" wx:elif="{{requestStatus == 2}}">
+    <text class="text-item">{{'没有找到相关数据'}}</text>
+</view>
